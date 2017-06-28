@@ -2,6 +2,8 @@
 <div class="container">
 	
 	<div class="row">
+		<a href="/">search</a>
+		<a href="/favorites">favorites</a>
 		<div class="col-sm-6">
 			<div>
 				<%= image_tag("teachable-logo.png", class: "img-responsive") %>
@@ -10,7 +12,35 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
-			search here
+
+			<div style="display:inline;">
+				<%= form_tag(root_path, method: "get") do %>
+					<%= text_field_tag(:q) %>
+					<%= submit_tag("Search") %>
+				<% end %>
+			</div>
+
+			<div>
+				<% if @results.present? %>
+					<div>
+						Gem Name: 
+						<a href="https://rubygems.org/gems/<%= @results['name'] %>" target="_blank">
+							<%= @results['name'] %>
+						</a> 
+						<img src="/assets/star-gray.png" alt="star-gray" id="<%= @results['name'] %>" onClick="toggleFavorites(this.id);">
+					</div>
+					<p>Gem Info: <%= @results['info'] %> </p>
+					<div>
+						<p>Dependencies:</p>
+						<ol>
+							<% @results['dependencies']['development'].each do |dependencies| %>
+								<li><a href="https://rubygems.org/gems/<%= dependencies['name'] %>" target="_blank"><%= dependencies['name'] %></a> <img src="/assets/star-gray.png" alt="star-gray" id="<%= dependencies['name'] %>" onClick="toggleFavorites(this.id);"></li>
+							<% end %>
+						</ol>
+					</div>
+				<% end %>
+				
+			</div>
 		</div>
 		
 	</div>
