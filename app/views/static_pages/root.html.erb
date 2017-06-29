@@ -2,46 +2,56 @@
 <div class="container">
 	
 	<div class="row">
-		<a href="/">search</a>
-		<a href="/favorites">favorites</a>
-		<div class="col-sm-6">
-			<div>
-				<%= image_tag("teachable-logo.png", class: "img-responsive") %>
-				<%= image_tag("map.png", class: "img-responsive") %>
-				
+		<div class="col-md-4">
+			<div class="main-header">
+				<%= image_tag("teachable-logo.png", class: "img-responsive teach-logo") %>
+				<%= image_tag("map.png", class: "img-responsive map-image") %>
+			</div>
+			<div class="nav-links">
+				<ul>
+					<li><a href="/" class="search-link">Search</a></li>
+					<li><a href="/favorites" class="favorites-link">Favorites</a></li>
+				</ul>
 			</div>
 		</div>
-		<div class="col-sm-6">
-
-			<div style="display:inline;">
+		<div class="col-md-8">
+			<!-- Gem Search Form Begin -->
+			<div class="search-form">
+				<h1>Search Gems</h1>
 				<%= form_tag(root_path, method: "get") do %>
-					<%= text_field_tag(:q) %>
-					<%= submit_tag("Search") %>
+					<%= text_field_tag(:q, params[:q], placeholder: "Search") %>
+					<input type="image" name="submit" src="/assets/magnifying-glass.png" border="0" alt="Submit" />
 				<% end %>
+				<div class="gem-error"></div>
 			</div>
+			<!-- Gem Search Form Ends -->
 
-			<div>
+			<!-- Gem Search Result Begin -->
+			<div class="gem-results">
 				<% if @results.present? %>
-					<div>
-						Gem Name: 
+					<div class="gem-results-name">
 						<a href="https://rubygems.org/gems/<%= @results['name'] %>" target="_blank">
 							<%= @results['name'] %>
 						</a> 
-						<img src="/assets/star-gray.png" alt="star-gray" id="<%= @results['name'] %>" onClick="toggleFavorites(this.id);">
+						<img src="/assets/star-gray.png" alt="star-favs" id="<%= @results['name'] %>" onClick="toggleFavorites(this.id);">
 					</div>
-					<p>Gem Info: <%= @results['info'] %> </p>
 					<div>
-						<p>Dependencies:</p>
-						<ol>
+						<p>INFORMATION</p>
+						<p class="gem-info"><%= @results['info'] %> </p>
+					</div>
+					<div>
+						<p>DEPENDENCIES</p>
+						<% if @results['dependencies']['development'].present? %>
 							<% @results['dependencies']['development'].each do |dependencies| %>
-								<li><a href="https://rubygems.org/gems/<%= dependencies['name'] %>" target="_blank"><%= dependencies['name'] %></a> <img src="/assets/star-gray.png" alt="star-gray" id="<%= dependencies['name'] %>" onClick="toggleFavorites(this.id);"></li>
+								<p><a href="https://rubygems.org/gems/<%= dependencies['name'] %>" target="_blank"><%= dependencies['name'] %></a> <img src="/assets/star-gray.png" alt="star-favs" id="<%= dependencies['name'] %>" onClick="toggleFavorites(this.id);"></p>
 							<% end %>
-						</ol>
+						<% else %>
+							<p class="gem-depend">None</p>
+						<% end %>
 					</div>
 				<% end %>
-				
 			</div>
+			<!-- Gem Search Result Begin -->
 		</div>
-		
 	</div>
 </div>

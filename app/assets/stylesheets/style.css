@@ -1,0 +1,197 @@
+@font-face {
+  font-family: 'Lato-Regular';    
+  src: url('/assets/Lato-Regular.ttf');
+}
+@font-face {
+  font-family: 'Lato-Bold';    
+  src: url('/assets/Lato-Bold.ttf');
+}
+.teach-logo{
+	position: absolute;
+	right: 47px;
+    top: 32px;
+    width: 17%;
+}
+
+.nav-links{
+	position: absolute;
+    right: -12px;
+    top: 250px;
+}
+.nav-links ul{
+	list-style: none;
+}
+.nav-links ul li{
+	height: 35px;
+}
+.selected-link{
+	background: rgba(255, 255, 255, 0.2);
+}
+.nav-links ul li a{
+	color: white;
+    padding: 9px 56px 9px 22px;
+}
+
+.search-form{
+    margin-top: 135px;
+}
+.gem-results{
+	margin-top: 30px;
+	padding-left: 60px;
+	padding-right: 165px;
+}
+.gem-favs{
+	margin-top: 140px;
+    padding-left: 20px;
+}
+.gem-results div:nth-child(2), .gem-results div:nth-child(3){
+	margin-top: 20px;
+}
+.gem-results p, .gem-results a{
+	font-family: 'Lato-Regular';
+	font-size: 15px;
+}
+.gem-results p{
+	color: #2C2F33;
+}
+.gem-results img:hover, .fav-gems-page img:hover{
+	cursor: pointer;
+}
+.fav-gems-page{
+	font-family: 'Lato-Regular';
+	padding-bottom: 15px;
+}
+.fav-gems-page img{
+	margin-right: 5px;
+}
+.search-form form{
+	padding: 10px 0 0 25px;
+}
+.search-form h1{
+	color: #2C2F33;
+	padding-left: 60px;
+	padding-bottom: 10px;
+	font-size: 40px;
+	font-family: 'Lato-Bold';
+}
+.gem-error{
+	color: red;
+    margin-left: 75px;
+    font-weight: 600;
+    font-size: 24px;
+}
+.gem-favs h1{
+	color: #2C2F33;
+	padding-bottom: 20px;
+	font-size: 40px;
+	font-family: 'Lato-Bold';
+}
+.search-form form input[type=text]{
+	border: 1px solid #5F5F5F;
+    border-radius: 100px;
+    height: 65px;
+	width: 80%;
+	padding-left: 30px;
+	color: #5F5F5F;
+	font-size: 18px;
+	font-family: 'Lato-Regular';
+}
+.search-form form input[type=text]:focus{
+    outline: none;
+    box-shadow: 0px 0px 5px blue;
+}
+.gem-info, .gem-depend{
+	color: #8E8E8E !important;
+}
+
+.search-form form input[type=image]{
+	width: 17px;
+	position: relative;
+	right: 50px;
+	top: 4px;
+}
+
+/*MEDIA QUERIES***************************
+*****************************************************************************/
+@media screen and (max-width : 1199px){
+	.nav-links{
+		top: 210px;
+	}
+	.gem-error{
+	    margin-left: 22px;
+	    font-weight: 600;
+	    font-size: 24px;
+	}
+}
+@media screen and (max-width : 991px){
+	.map-image{
+		display: none;
+	}
+	.main-header{
+		background-color: #619ac8;
+		width: 100%;
+		height: 45px;
+	}
+	.teach-logo{
+		position: absolute;
+		right: 0;
+		top: 13px;
+		width: 90px;
+		left: 23px;
+	}
+	.nav-links{
+		position: absolute;
+	    top: 12px;
+	    right: 0;
+	}
+	.nav-links ul li{
+		display: inline;
+	}
+	.search-form, .gem-favs{
+		margin-top: 30px;
+	}
+	.search-form h1, .gem-favs h1{
+		padding-left: 0;
+		text-align: center;
+	}
+	.search-form form input[type=text]{
+		width: 96%;
+	}
+	.nav-links ul li a {
+	    padding: 14px 40px 15px 40px;
+	}
+	.gem-error{
+	    margin-left: 130px;
+	    font-weight: 600;
+	    font-size: 24px;
+	}
+}
+@media screen and (max-width : 675px){
+	.search-form form input[type=text]{
+		width: 95%;
+	}
+	.gem-error{
+	    margin-left: 20%;
+	    font-weight: 600;
+	    font-size: 17px;
+	}
+}
+@media screen and (max-width : 472px){
+	.search-form form input[type=text]{
+		width: 94%;
+	}
+	.gem-error{
+	    margin-left: 8%;
+	    font-weight: 600;
+	    font-size: 16px;
+	}
+
+}
+@media screen and (max-width : 402px){
+	.search-form form input[type=text]{
+		width: 93%;
+	}
+	.gem-favs h1{
+		font-size: 38px;
+	}
+}

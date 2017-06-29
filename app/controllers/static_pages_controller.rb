@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
 
   def root
   	if params[:q].present?
-	  	@searchedGem = params[:q]
+	  	@searchedGem = params[:q].downcase
 		begin
 			@results = Gems.info @searchedGem
 		rescue JSON::ParserError => e
